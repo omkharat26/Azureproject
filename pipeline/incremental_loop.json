@@ -8,6 +8,10 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.loop_input",
+						"type": "Expression"
+					},
 					"activities": [
 						{
 							"name": "AzureSQL to ADLS",
@@ -179,7 +183,7 @@
 												"parameters": {
 													"container": "bronze",
 													"folder": {
-														"value": "@pipeline().parameters.table",
+														"value": "@item().table",
 														"type": "Expression"
 													},
 													"file": "@concat(pipeline().parameters.table,'_',variables('current'))"
